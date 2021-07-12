@@ -12,6 +12,13 @@ public:
     Buttons(int,QGraphicsScene *);
     ~Buttons();
     void mousePress(QGraphicsSceneMouseEvent *);
+    bool pressButt;
+private:
+    QString s;
+    int Xloc,Yloc;
+    int ButtNumber;
+    QGraphicsScene *myScene;
+    // picture p = ..
 };
 
 #endif // BUTTONS_H

@@ -1,8 +1,8 @@
 #include "Buttons.h"
 #include <QString>
-Buttons::Buttons(int ButtNumber,QGraphicsScene * myScene){
-    QString s;
-    int Xloc,Yloc;
+#include "GameEngine.h"
+Buttons::Buttons(int ButtNumber,QGraphicsScene * myScene):ButtNumber(ButtNumber),myScene(myScene){
+    pressButt=false;
     switch (ButtNumber) {
         case 1:
             s=":/images/TestButton.png";
@@ -24,6 +24,11 @@ Buttons::Buttons(int ButtNumber,QGraphicsScene * myScene){
             Xloc=750;
             Yloc=700;
             break;
+        case 5:
+            s=":/images/TestButton.png";
+            Xloc=100;
+            Yloc=900;
+            break;
     }
     setPixmap(QPixmap(s));
     myScene->addItem(this);
@@ -32,7 +37,32 @@ Buttons::Buttons(int ButtNumber,QGraphicsScene * myScene){
 Buttons::~Buttons(){
 }
 void Buttons::mousePress(QGraphicsSceneMouseEvent *press){
-    delete this;
+    pressButt=true;
+    switch(ButtNumber){
+        case 1:{
+            //continue game
+            myScene->clear();
+            //GameEngine * mygame = new GameEngine();
+            break;
+        }
+        case 2:
+            //new game
+
+            break;
+        case 3:
+            //game setting
+
+            break;
+        case 4:
+            //game shop
+
+            break;
+        case 5:
+            //directors
+
+            break;
+    }
+
     exit(1);
 }
 

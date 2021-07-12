@@ -9,13 +9,23 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Bird.cpp \
     Buttons.cpp \
+    Chick.cpp \
+    Chicken.cpp \
+    GameEngine.cpp \
     Menu.cpp \
+    SuperChick.cpp \
     main.cpp
 
 HEADERS += \
+    Bird.h \
     Buttons.h \
-    Menu.h
+    Chick.h \
+    Chicken.h \
+    GameEngine.h \
+    Menu.h \
+    SuperChick.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
