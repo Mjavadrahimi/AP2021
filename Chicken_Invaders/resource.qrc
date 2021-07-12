@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/images">
         <file>FirstTestLoadingScreen.png</file>
+        <file>TestButton.png</file>
     </qresource>
 </RCC>
