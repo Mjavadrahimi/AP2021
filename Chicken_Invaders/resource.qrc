@@ -14,5 +14,10 @@
         <file>superchicken4.png</file>
         <file>superchicken5.png</file>
         <file>superchicken6.png</file>
+        <file>icon.jpg</file>
+        <file>infoo.png</file>
+        <file>laser 1.png</file>
+        <file>laser 2.png</file>
+        <file>ship.png</file>
     </qresource>
 </RCC>

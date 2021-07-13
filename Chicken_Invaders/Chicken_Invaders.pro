@@ -10,23 +10,29 @@ CONFIG += c++11
 
 SOURCES += \
     Bird.cpp \
+    Bullet.cpp \
     Buttons.cpp \
     Chick.cpp \
     Chicken.cpp \
     GameEngine.cpp \
-    Menu.cpp \
+    MainMenu.cpp \
+    Player.cpp \
     Scoreboard.cpp \
+    SettingWindow.cpp \
     SuperChick.cpp \
     main.cpp
 
 HEADERS += \
     Bird.h \
+    Bullet.h \
     Buttons.h \
     Chick.h \
     Chicken.h \
     GameEngine.h \
-    Menu.h \
+    MainMenu.h \
+    Player.h \
     Scoreboard.h \
+    SettingWindow.h \
     SuperChick.h
 
 # Default rules for deployment.
@@ -36,3 +42,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resource.qrc
+
+FORMS += \
+    mainmenu.ui \
+    settingwindow.ui
