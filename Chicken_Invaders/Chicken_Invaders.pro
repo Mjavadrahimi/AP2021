@@ -13,8 +13,11 @@ SOURCES += \
     Bullet.cpp \
     Buttons.cpp \
     Chick.cpp \
+    ChickMeet.cpp \
     Chicken.cpp \
+    Egg.cpp \
     GameEngine.cpp \
+    Gift.cpp \
     MainMenu.cpp \
     Player.cpp \
     Scoreboard.cpp \
@@ -27,8 +30,11 @@ HEADERS += \
     Bullet.h \
     Buttons.h \
     Chick.h \
+    ChickMeet.h \
     Chicken.h \
+    Egg.h \
     GameEngine.h \
+    Gift.h \
     MainMenu.h \
     Player.h \
     Scoreboard.h \

@@ -1,9 +1,11 @@
 #ifndef BIRD_H
 #define BIRD_H
 
-#include<QObject>
-#include<QGraphicsPixmapItem>
-#include<QTimer>
+#include <QObject>
+#include <QGraphicsPixmapItem>
+#include <QTimer>
+#include "Scoreboard.h"
+#include "ChickMeet.h"
 
 
 class Bird : public QObject , public QGraphicsPixmapItem
@@ -12,14 +14,19 @@ class Bird : public QObject , public QGraphicsPixmapItem
 
 private:
     int hp;
-    int pixelPer20MiliSec;
     int time;
+    int point;
+    QTimer *bTimer;
+    ScoreBoard *bScore;
+protected:
+    int pixelPer8MiliSec;
 public:
-    Bird(const int& pixelPer20MiliSec , QTimer *bTimer , const int& hp , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene);
+    Bird(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp , QGraphicsItem *parent ,
+         int bX , int bY , QGraphicsScene *bScene , ScoreBoard * bScore);
 
 public slots:
     void damage();
-    void moveDown();
+    virtual void moveDown();
 };
 
 #endif // BIRD_H

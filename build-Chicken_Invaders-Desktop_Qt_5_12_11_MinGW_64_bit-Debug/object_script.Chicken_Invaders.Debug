@@ -2,8 +2,11 @@ debug/Bird.o
 debug/Bullet.o
 debug/Buttons.o
 debug/Chick.o
+debug/ChickMeet.o
 debug/Chicken.o
+debug/Egg.o
 debug/GameEngine.o
+debug/Gift.o
 debug/MainMenu.o
 debug/Player.o
 debug/Scoreboard.o
@@ -13,6 +16,9 @@ debug/main.o
 debug/qrc_resource.o
 debug/moc_Bird.o
 debug/moc_Bullet.o
+debug/moc_ChickMeet.o
 debug/moc_GameEngine.o
+debug/moc_Gift.o
 debug/moc_MainMenu.o
+debug/moc_Player.o
 debug/moc_SettingWindow.o

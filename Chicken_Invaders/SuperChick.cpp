@@ -1,7 +1,8 @@
 #include "SuperChick.h"
 
-SuperChick::SuperChick(const int& pixelPer20MiliSec , QTimer *bTimer , const int& hp
-             , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene): Bird(pixelPer20MiliSec,bTimer,hp,parent,bX,bY,bScene) ,cTime{0}
+SuperChick::SuperChick(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp
+             , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore)
+             : Bird(pixelPer8MiliSec,bTimer,hp,parent,bX,bY,bScene,bScore) ,cTime{0}
 {
 
     setPixmap(QPixmap(":/images/superchicken6.png"));

@@ -1,8 +1,9 @@
 #include "Chicken.h"
 #include "Bird.h"
 
-Chicken::Chicken(const int& pixelPer20MiliSec , QTimer *bTimer , const int& hp , QGraphicsItem *parent ,
-                 int bX , int bY , QGraphicsScene *bScene) : Bird(pixelPer20MiliSec,bTimer,hp,parent,bX,bY,bScene) ,cTime{0}
+Chicken::Chicken(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp , QGraphicsItem *parent ,
+                 int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore) :
+                    Bird(pixelPer8MiliSec,bTimer,hp,parent,bX,bY,bScene,bScore) ,cTime{0}
 {
 
     setPixmap(QPixmap(":/images/babyChicken3.jpg"));

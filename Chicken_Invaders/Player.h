@@ -6,18 +6,40 @@
 #include <QKeyEvent>
 #include <QGraphicsScene>
 #include <QMessageBox>
+#include <QObject>
+#include <QTimer>
+#include <QMouseEvent>
+#include "Bird.h"
+#include "ChickMeet.h"
+#include "Gift.h"
 
-class Player : public QGraphicsPixmapItem
+
+
+class Player : public QObject , public QGraphicsPixmapItem
 {
+
+    Q_OBJECT
+
+private:
+    int Life;
+    int BulletLevel;
+    QTimer *pTimer;
+    QMessageBox *Message;
+    bool isLive;
+    int explosionTime;
+
 public:
-    Player();
+    Player(QGraphicsItem *parent , QTimer *timer);
     void keyPressEvent(QKeyEvent * event);
     void DecreaseLife();
-    int Life;
     int GetLife();
-    QMessageBox *Message;
+    void SetBulletLevel(int BulletLevel);
+    int GetBulletLevel();
+    void mousePressEvent(QMouseEvent * event);
 
 
+public slots:
+    void setposition();
 };
 
 #endif // PLAYER_H

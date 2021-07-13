@@ -9,8 +9,8 @@ private:
     int cTime;
 
 public:
-    SuperChick(const int& pixelPer20MiliSec , QTimer *bTimer , const int& hp
-          , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene);
+    SuperChick(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp
+          , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore);
 
 public slots:
     void changePic();

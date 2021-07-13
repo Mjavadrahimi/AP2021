@@ -2,8 +2,11 @@ release/Bird.o
 release/Bullet.o
 release/Buttons.o
 release/Chick.o
+release/ChickMeet.o
 release/Chicken.o
+release/Egg.o
 release/GameEngine.o
+release/Gift.o
 release/MainMenu.o
 release/Player.o
 release/Scoreboard.o
@@ -13,6 +16,9 @@ release/main.o
 release/qrc_resource.o
 release/moc_Bird.o
 release/moc_Bullet.o
+release/moc_ChickMeet.o
 release/moc_GameEngine.o
+release/moc_Gift.o
 release/moc_MainMenu.o
+release/moc_Player.o
 release/moc_SettingWindow.o

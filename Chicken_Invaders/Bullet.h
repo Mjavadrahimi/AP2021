@@ -7,9 +7,13 @@ class Bullet:public QObject ,
         public QGraphicsPixmapItem
 {
     Q_OBJECT
-public:
-    Bullet();
+
+private:
     int BulletLevel = 0;
+    int pixelPer8MiliSec=4;
+public:
+    Bullet(const int& BulletLevel,QTimer *timer);
+
 public slots:
     void move();
 

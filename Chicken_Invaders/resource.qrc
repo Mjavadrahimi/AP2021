@@ -19,5 +19,9 @@
         <file>laser 1.png</file>
         <file>laser 2.png</file>
         <file>ship.png</file>
+        <file>egg1.png</file>
+        <file>egg2.png</file>
+        <file>chickmeat.png</file>
+        <file>gift.png</file>
     </qresource>
 </RCC>
