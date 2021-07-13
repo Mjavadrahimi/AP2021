@@ -234,8 +234,10 @@ Makefile: ../Chicken_Invaders/Chicken_Invaders.pro C:/Qt/Qt5.12.11/5.12.11/mingw
 		C:/Qt/Qt5.12.11/5.12.11/mingw73_64/mkspecs/features/yacc.prf \
 		C:/Qt/Qt5.12.11/5.12.11/mingw73_64/mkspecs/features/lex.prf \
 		../Chicken_Invaders/Chicken_Invaders.pro \
+		C:/Qt/Qt5.12.11/5.12.11/mingw73_64/lib/Qt5Multimedia.prl \
 		C:/Qt/Qt5.12.11/5.12.11/mingw73_64/lib/Qt5Widgets.prl \
 		C:/Qt/Qt5.12.11/5.12.11/mingw73_64/lib/Qt5Gui.prl \
+		C:/Qt/Qt5.12.11/5.12.11/mingw73_64/lib/Qt5Network.prl \
 		C:/Qt/Qt5.12.11/5.12.11/mingw73_64/lib/Qt5Core.prl \
 		C:/Qt/Qt5.12.11/5.12.11/mingw73_64/lib/qtmain.prl
 	$(QMAKE) -o Makefile ..\Chicken_Invaders\Chicken_Invaders.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -410,8 +412,10 @@ C:/Qt/Qt5.12.11/5.12.11/mingw73_64/mkspecs/features/exceptions.prf:
 C:/Qt/Qt5.12.11/5.12.11/mingw73_64/mkspecs/features/yacc.prf:
 C:/Qt/Qt5.12.11/5.12.11/mingw73_64/mkspecs/features/lex.prf:
 ../Chicken_Invaders/Chicken_Invaders.pro:
+C:/Qt/Qt5.12.11/5.12.11/mingw73_64/lib/Qt5Multimedia.prl:
 C:/Qt/Qt5.12.11/5.12.11/mingw73_64/lib/Qt5Widgets.prl:
 C:/Qt/Qt5.12.11/5.12.11/mingw73_64/lib/Qt5Gui.prl:
+C:/Qt/Qt5.12.11/5.12.11/mingw73_64/lib/Qt5Network.prl:
 C:/Qt/Qt5.12.11/5.12.11/mingw73_64/lib/Qt5Core.prl:
 C:/Qt/Qt5.12.11/5.12.11/mingw73_64/lib/qtmain.prl:
 qmake: FORCE

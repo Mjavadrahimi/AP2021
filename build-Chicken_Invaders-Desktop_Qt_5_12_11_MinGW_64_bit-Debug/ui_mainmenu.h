@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
@@ -26,6 +27,7 @@ public:
     QPushButton *SettingButton_2;
     QPushButton *ExitButton_3;
     QPushButton *CreatorsButton_4;
+    QGraphicsView *graphicsView;
 
     void setupUi(QMainWindow *MainMenu)
     {
@@ -60,8 +62,9 @@ public:
         font1.setPointSize(14);
         font1.setItalic(false);
         StartButton->setFont(font1);
-        StartButton->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));\n"
-"color: rgb(170, 170, 0);"));
+        StartButton->setStyleSheet(QString::fromUtf8("color: rgb(170, 170, 0);\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));\n"
+""));
         StartButton->setIconSize(QSize(700, 700));
         SettingButton_2 = new QPushButton(centralwidget);
         SettingButton_2->setObjectName(QString::fromUtf8("SettingButton_2"));
@@ -87,6 +90,11 @@ public:
         icon1.addFile(QString::fromUtf8("../../../Downloads/infoo.png"), QSize(), QIcon::Normal, QIcon::Off);
         CreatorsButton_4->setIcon(icon1);
         CreatorsButton_4->setIconSize(QSize(40, 40));
+        graphicsView = new QGraphicsView(centralwidget);
+        graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
+        graphicsView->setGeometry(QRect(300, -10, 1200, 540));
+        graphicsView->setStyleSheet(QString::fromUtf8("background-image: url(:/images/tiltle.png);\n"
+"border:none;"));
         MainMenu->setCentralWidget(centralwidget);
 
         retranslateUi(MainMenu);

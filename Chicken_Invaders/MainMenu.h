@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include "gameengine.h"
 #include "SettingWindow.h"
+#include <QMediaPlayer>
 
 namespace Ui {
 class MainMenu;
@@ -13,10 +14,15 @@ class MainMenu;
 class MainMenu : public QMainWindow
 {
     Q_OBJECT
-
+private:
+    QMediaPlayer *music;
 public:
     explicit MainMenu(QWidget *parent = nullptr);
+    void PlayMusic();
     ~MainMenu();
+
+
+
 
 private slots:
 
