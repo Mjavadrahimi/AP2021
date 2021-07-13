@@ -1,0 +1,13 @@
+release/Bird.o
+release/Buttons.o
+release/Chick.o
+release/Chicken.o
+release/GameEngine.o
+release/Menu.o
+release/Scoreboard.o
+release/SuperChick.o
+release/main.o
+release/qrc_resource.o
+release/moc_Bird.o
+release/moc_GameEngine.o
+release/moc_Menu.o

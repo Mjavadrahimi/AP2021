@@ -4,8 +4,17 @@
 
 class Chicken : public Bird
 {
+
+private:
+    int cTime;
+
 public:
-    Chicken();
+    Chicken(const int& pixelPer20MiliSec , QTimer *bTimer , const int& hp
+            , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene);
+
+public slots:
+    void changePic();
+
 };
 
 #endif // CHICKEN_H

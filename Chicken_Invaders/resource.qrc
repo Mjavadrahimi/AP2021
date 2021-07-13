@@ -2,5 +2,17 @@
     <qresource prefix="/images">
         <file>FirstTestLoadingScreen.png</file>
         <file>TestButton.png</file>
+        <file>babyChicken1.png</file>
+        <file>babyChicken2.png</file>
+        <file>babyChicken3.jpg</file>
+        <file>chicken1.png</file>
+        <file>chicken2.png</file>
+        <file>chicken3.png</file>
+        <file>superchicken1.png</file>
+        <file>superchicken2.png</file>
+        <file>superchicken3.png</file>
+        <file>superchicken4.png</file>
+        <file>superchicken5.png</file>
+        <file>superchicken6.png</file>
     </qresource>
 </RCC>

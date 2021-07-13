@@ -1,0 +1,13 @@
+debug/Bird.o
+debug/Buttons.o
+debug/Chick.o
+debug/Chicken.o
+debug/GameEngine.o
+debug/Menu.o
+debug/Scoreboard.o
+debug/SuperChick.o
+debug/main.o
+debug/qrc_resource.o
+debug/moc_Bird.o
+debug/moc_GameEngine.o
+debug/moc_Menu.o

@@ -15,6 +15,7 @@ SOURCES += \
     Chicken.cpp \
     GameEngine.cpp \
     Menu.cpp \
+    Scoreboard.cpp \
     SuperChick.cpp \
     main.cpp
 
@@ -25,6 +26,7 @@ HEADERS += \
     Chicken.h \
     GameEngine.h \
     Menu.h \
+    Scoreboard.h \
     SuperChick.h
 
 # Default rules for deployment.

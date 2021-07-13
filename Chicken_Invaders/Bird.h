@@ -1,9 +1,25 @@
 #ifndef BIRD_H
 #define BIRD_H
-class Bird
+
+#include<QObject>
+#include<QGraphicsPixmapItem>
+#include<QTimer>
+
+
+class Bird : public QObject , public QGraphicsPixmapItem
 {
+    Q_OBJECT
+
+private:
+    int hp;
+    int pixelPer20MiliSec;
+    int time;
 public:
-    Bird();
+    Bird(const int& pixelPer20MiliSec , QTimer *bTimer , const int& hp , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene);
+
+public slots:
+    void damage();
+    void moveDown();
 };
 
 #endif // BIRD_H
