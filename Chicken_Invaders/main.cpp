@@ -1,10 +1,10 @@
 #include <QApplication>
-#include "Menu.h"
+#include "MainMenu.h"
 int main(int argc, char *argv[]){
     QApplication a(argc, argv);
+    MainMenu *main = new MainMenu();
+    main->show();
 
-    Menu *mygame = new Menu();
-    mygame->show();
 
     return a.exec();
 }
