@@ -23,5 +23,12 @@
         <file>egg2.png</file>
         <file>chickmeat.png</file>
         <file>gift.png</file>
+        <file>volumeasli.png</file>
+        <file>tiltle.png</file>
+        <file>mouse1.png</file>
+        <file>fork.png</file>
+    </qresource>
+    <qresource prefix="/music">
+        <file>music.mp3</file>
     </qresource>
 </RCC>

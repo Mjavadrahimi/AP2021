@@ -22,7 +22,7 @@ MainMenu::~MainMenu()
 void MainMenu::PlayMusic()
 {
     music = new QMediaPlayer();
-    music->setMedia(QUrl("qrc:/sounds/music.mp3"));
+    music->setMedia(QUrl("qrc:/music/music.mp3"));
     music->play();
     music->setVolume(70);
 
