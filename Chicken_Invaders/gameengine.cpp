@@ -13,6 +13,11 @@
 using namespace std;
 GameEngine::GameEngine(int level):level(level),QGraphicsView() {
     // QCursor
+    kills=new int();
+    *kills=0;
+    isLeveled=false;
+    //this->level=6;
+
     QCursor cursor(Qt::BlankCursor);
     QApplication::setOverrideCursor(cursor);
     QApplication::changeOverrideCursor(cursor);
@@ -25,10 +30,8 @@ GameEngine::GameEngine(int level):level(level),QGraphicsView() {
     myScene = new QGraphicsScene();
     myScene->setSceneRect(0,0,1800,1000);
     setScene(myScene);
+    setBackgroundBrush(QBrush(QImage(":/images/BackGround.png")));
 
-    // create scene2
-    myScene2 = new QGraphicsScene();
-    myScene2->setSceneRect(0,0,1800,1000);
     // fix size
     setFixedSize(1800,1000);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -41,18 +44,23 @@ GameEngine::GameEngine(int level):level(level),QGraphicsView() {
 
     myScore=new ScoreBoard(holder);
 //    myBirds->append(new Chick(2,gameTimer,1,holder,150+250+6*130,100+105+6*130 - 620,myScene,myScore));
-    AddBirds();
-//    AddSS();
+
+
+    //    AddSS();
     // craete ss
-    p = new Player(holder,gameTimer);
+    p = new Player(holder,gameTimer,kills);
     myScene->addItem(p);
 //    AddScoreBoard();
 
-    mrChicken = new Chicken(2,gameTimer,1,holder,900,500,myScene,myScore);
-    myScene->addItem(mrChicken);
-    mrChicken->setPos(300,300);
+//    b1 = new Bullet(1,gameTimer);
+//    myScene->addItem(b1);
+//    b1->setPos(800,840);
+
+    p->setFlag(QGraphicsItem::ItemIsFocusable);
+    p->setFocus();
 
     connect(gameTimer,SIGNAL(timeout()),this,SLOT(TimeSchedule()));
+
 
 }
 GameEngine::~GameEngine(){
@@ -63,26 +71,52 @@ GameEngine::~GameEngine(){
 }
 void GameEngine::TimeSchedule(){
     GameTime++;
-    if( GameTime * 8 <= 0 ) return ; //wait 4000 ms
+
+    if(isLeveled){
+        qInfo()<<"lvl done2";
+        level++;
+        GameTime=0;
+        isLeveled=false;
+        connect_bird=false;
+    }
+
+    if( GameTime * 8 <= 4000) return ; //wait 4000 ms
+
+
+
 
     // set move down for birds
     if(!connect_bird){
-        for(int i=0;i<0;i++){
+        AddBirds();
+        for(int i=0;i<myBirds.size();i++){
 //            myBirds->at(i)->moveDown();
+
             connect(gameTimer,SIGNAL(timeout()),myBirds.at(i),SLOT(moveDown()));
         }
         connect_bird=true;
     }
     switch (level) {
-        case 1:{ // level 1 = Season 1 Part 1
-            // no event
+        case 1:{ if(*kills==80) {
+            qInfo()<<"lvl done";
+            isLeveled=true;
+            *kills=0;
+        }
             break;
         }
-        case 2:{ // level 2 = Season 1 Part 2
-            // no event
+        case 2:{
+        if(*kills==144) {
+                    qInfo()<<"lvl done";
+                    isLeveled=true;
+                    *kills=0;
+                }
             break;
         }
         case 3:{ // level 3 = Season 2 Part 1
+                if(*kills==96) {
+                    qInfo()<<"lvl done";
+                    isLeveled=true;
+                    *kills=0;
+                }
             if((GameTime * 8) % 5000 == 4000){ // T= s 9000 14000
                 ChooseEggSpawn(); //choose Birds to drop an egg
                 DropEgg(); //drop eggs
@@ -90,6 +124,11 @@ void GameEngine::TimeSchedule(){
             break;
         }
         case 4:{ // level 4 = Season 2 Part 2
+           if(*kills==120) {
+               qInfo()<<"lvl done";
+               isLeveled=true;
+               *kills=0;
+           }
             if((GameTime * 8) % 5000 == 4000){ // T= s 9000 14000
                 ChooseEggSpawn(); //choose Birds to drop an egg
                 DropEgg(); //drop eggs
@@ -98,6 +137,11 @@ void GameEngine::TimeSchedule(){
             break;
         }
         case 5:{ // level 5 = Season 3 Part 1
+            if(*kills==72) {
+                qInfo()<<"lvl done";
+                isLeveled=true;
+                *kills=0;
+            }
             if((GameTime * 8) % 6000 == 4000){ // T= s 10000 16000
                 ChooseEggSpawn(); //choose Birds to drop an egg
                 DropEgg(); //drop eggs
@@ -107,6 +151,11 @@ void GameEngine::TimeSchedule(){
             break;
         }
         case 6:{ // level 6 = Season 3 Part 2
+            if(*kills==108) {
+                qInfo()<<"lvl done";
+                isLeveled=true;
+                *kills=0;
+            }
             if((GameTime * 8) % 7000 == 4000){ // T= s 11000 18000
                 ChooseEggSpawn(); //choose Birds to drop an egg
                 DropEgg(); //drop eggs
@@ -120,16 +169,10 @@ void GameEngine::TimeSchedule(){
 void GameEngine::AddBirds(){
     switch(level){
         case 1:{          // SEASON 1
-//            myBirds->clear();
+            myBirds.clear();
             for(int i=0;i<5;i++){// 5 sotoon
                 for(int j=0;j<4;j++){// 4 radif
-                    qInfo()<<"123ssss";
-//                    myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+445+i*130,100+40+j*130 - 620,myScene,myScore));
-//                    myScene->addItem(myBirds.last());
-//                    myBirds.last()->setPos(150+445+i*130,100+40+j*130 - 620);
-//                    mrChicken = new Chicken(2,gameTimer,1,holder,900,500,myScene,myScore);
-//                    mrChicken->setPos(300,300);,myScene,myScore));
-//                    myBirds.push_back(new Chicken(2,gameTimer,1,holder,900,500,myScene2,myScore));
+                    myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+445+i*130,100+40+j*130 - 620,myScene,myScore));
                 }
             }
             break;
@@ -138,7 +181,7 @@ void GameEngine::AddBirds(){
             myBirds.clear();
             for(int i=0;i<9;i++){// 9 sotoon
                 for(int j=0;j<4;j++){// 4 radif
-//                    myBirds->append(new Chicken(2,gameTimer,1,holder,150+145+i*130,100+40+j*130 - 620,myScene));
+                    myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+145+i*130,100+40+j*130 - 620,myScene,myScore));
                 }
             }
             break;
@@ -147,37 +190,40 @@ void GameEngine::AddBirds(){
             myBirds.clear();
             for(int i=0;i<8;i++){// 8 sotoon
                 for(int j=0;j<3;j++){// 3 radif
-//                    if((i+j)%2==0)myBirds->append(new Chick(2,gameTimer,1,holder,150+250+i*130,100+105+j*130 - 620,myScene));
-//                    else myBirds->append(new Chick(2,gameTimer,1,holder,150+250+i*130,100+105+j*130 - 620,myScene));
+                    if((i+j)%2==0)myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+250+i*130,100+105+j*130 - 620,myScene,myScore));
+                    else myBirds.push_back(new Chick(2,gameTimer,2,holder,150+250+i*130,100+105+j*130 - 620,myScene,myScore));
 
                 }
             }
             break;
         }
         case 4:{
+            myBirds.clear();
             for(int i=0;i<10;i++){// 10 sotoon
                 for(int j=0;j<3;j++){// 3 radif
-//                    if((i)%3==0)myBirds->append(new Chick(2,gameTimer,1,holder,150+120+i*130,100+105+j*130 - 620,myScene));
-//                    else myBirds->append(new Chick(2,gameTimer,1,holder,150+120+i*130,100+105+j*130 - 620,myScene));
+                    if((i)%3==0)myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+120+i*130,100+105+j*130 - 620,myScene,myScore));
+                    else myBirds.push_back(new Chick(2,gameTimer,2,holder,150+120+i*130,100+105+j*130 - 620,myScene,myScore));
 
                 }
             }
             break;
         }
         case 5:{          // SEASON 3
+            myBirds.clear();
             for(int i=0;i<6;i++){// 6 sotoon
                 for(int j=0;j<3;j++){// 3 radif
-//                    if((i+j)%2==0)myBirds->append(new Chicken(2,gameTimer,1,holder,150+380+i*130,100+105+j*130 - 620,myScene));
-//                    else myBirds->append(new SuperChick(2,gameTimer,1,holder,150+380+i*130,100+105+j*130 - 620,myScene));
+                    if((i+j)%2==0)myBirds.push_back(new Chick(2,gameTimer,2,holder,150+380+i*130,100+105+j*130 - 620,myScene,myScore));
+                    else myBirds.push_back(new SuperChick(2,gameTimer,4,holder,150+380+i*130,100+105+j*130 - 620,myScene,myScore));
 
                 }
             }
             break;
         }
         case 6:{
+            myBirds.clear();
             for(int i=0;i<9;i++){// 9 sotoon
                 for(int j=0;j<3;j++){// 3 radif
-//                    myBirds->append(new SuperChick(2,gameTimer,1,holder,150+145+i*130,100+105+j*130 - 620,myScene));
+                    myBirds.push_back(new SuperChick(2,gameTimer,4,holder,150+145+i*130,100+105+j*130 - 620,myScene,myScore));
 
                 }
             }
@@ -213,8 +259,8 @@ void GameEngine::ChooseEggSpawn(){
             break;
         }
         case 6:{
-            myVector=RandomMaker().RandShuffle(29);
-            while(myVector.size()!=15){ // return 15 random number between {0,1,2,...,29}
+            myVector=RandomMaker().RandShuffle(26);
+            while(myVector.size()!=15){ // return 15 random number between {0,1,2,...,26}
                 myVector.pop_back();
             }
             break;
@@ -223,6 +269,7 @@ void GameEngine::ChooseEggSpawn(){
 }
 void GameEngine::DropEgg(){
     for(int i=0;i<myVector.size();i++){
-        //myBirds->at(i)->Drop();
+        if((dynamic_cast<Bird *>(myBirds.at(myVector.at(i))))->getIsLive())
+        (dynamic_cast<Bird *>(myBirds.at(myVector.at(i))))->dropEgg();
     }
 }

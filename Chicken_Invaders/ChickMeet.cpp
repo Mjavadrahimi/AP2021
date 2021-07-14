@@ -8,9 +8,9 @@ ChickMeet::ChickMeet(QTimer *cTimer)
 
 void ChickMeet::moveDown()
 {
-    if(this->pos().x()==940){
+    if(this->pos().y()>=800){
         scene()->removeItem(this);
         delete this;
     }
-    this->setPos(x(),y()-+pixelPer8MiliSec);
+    this->setPos(x(),y()+pixelPer8MiliSec);
 }

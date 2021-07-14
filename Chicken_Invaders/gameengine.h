@@ -15,6 +15,8 @@
 #include "Chicken.h"
 #include "SuperChick.h"
 #include "Player.h"
+#include "Bullet.h"
+#include <QGraphicsPixmapItem>
 //#include "Gift.h"
 //#include "SpaceShip.h"
 //#include "Scoreboard.h"
@@ -29,7 +31,6 @@ public:
     void DropEgg();
 private:
     int level;
-    Chicken * mrChicken;
     Player * p;
     int GameTime;
     std::vector<int> myVector;
@@ -39,8 +40,10 @@ private:
     QTimer * gameTimer;
     QGraphicsRectItem * holder;
     QGraphicsScene * myScene;
-    QGraphicsScene * myScene2;
+    Bullet *b1;
     ScoreBoard * myScore;
+    int *kills;
+    bool isLeveled;
     //SpaceShip * mySS;
     //ScoreBoard * ScoreBoard
 public slots:

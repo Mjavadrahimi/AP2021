@@ -2,6 +2,10 @@
 #define BULLET_H
 #include <QGraphicsPixmapItem>
 #include <QObject>
+#include "Chicken.h"
+#include "SuperChick.h"
+#include "Chick.h"
+#include "Egg.h"
 
 class Bullet:public QObject ,
         public QGraphicsPixmapItem
@@ -11,8 +15,9 @@ class Bullet:public QObject ,
 private:
     int BulletLevel = 0;
     int pixelPer8MiliSec=4;
+    int *kills;
 public:
-    Bullet(const int& BulletLevel,QTimer *timer);
+    Bullet(const int& BulletLevel,QTimer *timer,int *kills);
 
 public slots:
     void move();

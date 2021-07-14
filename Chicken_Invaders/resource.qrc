@@ -1,19 +1,9 @@
 <RCC>
     <qresource prefix="/images">
-        <file>FirstTestLoadingScreen.png</file>
+        <file>BackGround.png</file>
         <file>TestButton.png</file>
         <file>babyChicken1.png</file>
         <file>babyChicken2.png</file>
-        <file>babyChicken3.jpg</file>
-        <file>chicken1.png</file>
-        <file>chicken2.png</file>
-        <file>chicken3.png</file>
-        <file>superchicken1.png</file>
-        <file>superchicken2.png</file>
-        <file>superchicken3.png</file>
-        <file>superchicken4.png</file>
-        <file>superchicken5.png</file>
-        <file>superchicken6.png</file>
         <file>icon.jpg</file>
         <file>infoo.png</file>
         <file>laser 1.png</file>
@@ -27,6 +17,16 @@
         <file>tiltle.png</file>
         <file>mouse1.png</file>
         <file>fork.png</file>
+        <file>chicken1.png</file>
+        <file>chicken2.png</file>
+        <file>chicken3.png</file>
+        <file>superchicken1.png</file>
+        <file>superchicken2.png</file>
+        <file>superchicken3.png</file>
+        <file>superchicken4.png</file>
+        <file>superchicken5.png</file>
+        <file>superchicken6.png</file>
+        <file>babyChicken3.png</file>
     </qresource>
     <qresource prefix="/music">
         <file>music.mp3</file>
