@@ -20,6 +20,7 @@ SOURCES += \
     Gift.cpp \
     MainMenu.cpp \
     Player.cpp \
+    RandomMaker.cpp \
     Scoreboard.cpp \
     SettingWindow.cpp \
     SuperChick.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     Gift.h \
     MainMenu.h \
     Player.h \
+    RandomMaker.h \
     Scoreboard.h \
     SettingWindow.h \
     SuperChick.h
