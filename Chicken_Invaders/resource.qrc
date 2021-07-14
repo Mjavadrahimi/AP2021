@@ -28,4 +28,7 @@
         <file>volumeasli.png</file>
         <file>fork.png</file>
     </qresource>
+    <qresource prefix="/sounds">
+        <file>music.mp3</file>
+    </qresource>
 </RCC>
