@@ -1,8 +1,9 @@
 #include "Bird.h"
 #include <QGraphicsScene>
 Bird::Bird(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp , QGraphicsItem *parent,int bX,int bY ,QGraphicsScene *bScene
-           ,  ScoreBoard * bScore) : QObject() , QGraphicsPixmapItem(parent), hp{hp} , pixelPer8MiliSec{pixelPer8MiliSec} , time{0}
+           ,  ScoreBoard * bScore) : QObject() , QGraphicsPixmapItem(parent), hp{hp} , time{0}
 {
+    this->pixelPer8MiliSec=pixelPer8MiliSec;
     this->bTimer=bTimer;
     this->bScore=bScore;
     if(hp == 1 )
