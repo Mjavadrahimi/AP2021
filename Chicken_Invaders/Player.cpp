@@ -122,8 +122,9 @@ void Player::setposition()
         if(explosionTime==80){
             setPixmap(QPixmap(":/images/ship.png"));
             isLive=true;
-            setPos(840,800);
             explosionTime=0;
+            setPos(840,800);
+
         }
     }
 }

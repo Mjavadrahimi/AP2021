@@ -5,9 +5,19 @@ SuperChick::SuperChick(const int& pixelPer8MiliSec , QTimer *bTimer , const int&
              : Bird(pixelPer8MiliSec,bTimer,hp,parent,bX,bY,bScene,bScore) ,cTime{0}
 {
 
+    timer = bTimer;
+    par=parent;
+    cScene=bScene;
+    sB=bScore;
     setPixmap(QPixmap(":/images/superchicken6.png"));
 
     connect(bTimer,SIGNAL(timeout()),this,SLOT(changePic()));
+}
+
+void SuperChick::dropEgg()
+{
+    Egg *cE = new Egg(1,timer,1,par,15,90,cScene,sB);
+    scene()->addItem(cE);
 }
 
 void SuperChick::changePic()
