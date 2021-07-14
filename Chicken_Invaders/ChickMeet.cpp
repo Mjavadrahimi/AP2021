@@ -12,5 +12,5 @@ void ChickMeet::moveDown()
         scene()->removeItem(this);
         delete this;
     }
-    this->setPos(x(),y()+pixelPer8MiliSec);
+    this->setPos(x(),y()-+pixelPer8MiliSec);
 }

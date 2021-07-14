@@ -1,5 +1,5 @@
 #include "Chick.h"
-
+#include <QDebug>
 Chick::Chick(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp
              , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore)
                 : Bird(pixelPer8MiliSec,bTimer,hp,parent,bX,bY,bScene,bScore) ,cTime{0}
@@ -10,7 +10,6 @@ Chick::Chick(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp
     sB=bScore;
     setPixmap(QPixmap(":/images/chicken3.png"));
 
-    connect(bTimer,SIGNAL(timeout()),this,SLOT(changePic()));
 }
 
 void Chick::dropEgg()
@@ -21,8 +20,10 @@ void Chick::dropEgg()
 
 void Chick::changePic()
 {
+    qInfo()<<"123123123";
     cTime++;
-    switch (cTime%3) {
+    a=cTime%3;
+    switch (a) {
     case 0:
         setPixmap(QPixmap(":/images/chicken3.png"));
         break;

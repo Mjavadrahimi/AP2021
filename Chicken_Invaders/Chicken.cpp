@@ -5,10 +5,8 @@ Chicken::Chicken(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp , 
                  int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore) :
                     Bird(pixelPer8MiliSec,bTimer,hp,parent,bX,bY,bScene,bScore) ,cTime{0}
 {
-
-    setPixmap(QPixmap(":/images/babyChicken3.jpg"));
-
-    connect(bTimer,SIGNAL(timeout()),this,SLOT(changePic()));
+//    connect(bTimer,SIGNAL(timeout()),this,SLOT(changePic()));
+    setPixmap(QPixmap(":/images/babyChicken1.png"));
 }
 
 void Chicken::changePic()

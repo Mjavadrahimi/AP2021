@@ -9,7 +9,12 @@
 #include <QApplication>
 #include <QTimer>
 #include <vector>
+#include "Scoreboard.h"
 #include "Bird.h"
+#include "Chick.h"
+#include "Chicken.h"
+#include "SuperChick.h"
+#include "Player.h"
 //#include "Gift.h"
 //#include "SpaceShip.h"
 //#include "Scoreboard.h"
@@ -24,14 +29,18 @@ public:
     void DropEgg();
 private:
     int level;
+    Chicken * mrChicken;
+    Player * p;
     int GameTime;
     std::vector<int> myVector;
     int IntoSecond; // convert QTimer repeat times to second
     bool connect_bird=false;
-    QList<Bird *> * myBirds;
+    QList<Bird *> myBirds;
     QTimer * gameTimer;
     QGraphicsRectItem * holder;
     QGraphicsScene * myScene;
+    QGraphicsScene * myScene2;
+    ScoreBoard * myScore;
     //SpaceShip * mySS;
     //ScoreBoard * ScoreBoard
 public slots:

@@ -8,7 +8,10 @@
 #include "randommaker.h"
 #include <list>
 #include <QTimer>
-GameEngine::GameEngine(int level):level(level) {
+#include <iostream>
+#include <QDebug>
+using namespace std;
+GameEngine::GameEngine(int level):level(level),QGraphicsView() {
     // QCursor
     QCursor cursor(Qt::BlankCursor);
     QApplication::setOverrideCursor(cursor);
@@ -23,6 +26,9 @@ GameEngine::GameEngine(int level):level(level) {
     myScene->setSceneRect(0,0,1800,1000);
     setScene(myScene);
 
+    // create scene2
+    myScene2 = new QGraphicsScene();
+    myScene2->setSceneRect(0,0,1800,1000);
     // fix size
     setFixedSize(1800,1000);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -33,28 +39,37 @@ GameEngine::GameEngine(int level):level(level) {
     holder = new QGraphicsRectItem();
     holder -> setRect(0,0,1800,1000);
 
+    myScore=new ScoreBoard(holder);
+//    myBirds->append(new Chick(2,gameTimer,1,holder,150+250+6*130,100+105+6*130 - 620,myScene,myScore));
     AddBirds();
 //    AddSS();
+    // craete ss
+    p = new Player(holder,gameTimer);
+    myScene->addItem(p);
 //    AddScoreBoard();
 
-    connect(gameTimer,SIGNAL(timeout()),this,SLOT(GameTimerSchedule()));
+    mrChicken = new Chicken(2,gameTimer,1,holder,900,500,myScene,myScore);
+    myScene->addItem(mrChicken);
+    mrChicken->setPos(300,300);
+
+    connect(gameTimer,SIGNAL(timeout()),this,SLOT(TimeSchedule()));
 
 }
 GameEngine::~GameEngine(){
-    delete [] myBirds;
+//    delete [] myBirds;
 //    delete mySS;
 //    delete ScoreBoard
 
 }
 void GameEngine::TimeSchedule(){
     GameTime++;
-    if( GameTime * 8 >= 4000 ) return ; //wait 4000 ms
+    if( GameTime * 8 <= 0 ) return ; //wait 4000 ms
 
     // set move down for birds
     if(!connect_bird){
-        for(int i=0;i<myBirds->size();i++){
-            myBirds->at(i)->moveDown();
-            connect(gameTimer,SIGNAL(timeout()),myBirds->at(i),SLOT(movedown()));
+        for(int i=0;i<0;i++){
+//            myBirds->at(i)->moveDown();
+            connect(gameTimer,SIGNAL(timeout()),myBirds.at(i),SLOT(moveDown()));
         }
         connect_bird=true;
     }
@@ -105,29 +120,35 @@ void GameEngine::TimeSchedule(){
 void GameEngine::AddBirds(){
     switch(level){
         case 1:{          // SEASON 1
-            myBirds->clear();
+//            myBirds->clear();
             for(int i=0;i<5;i++){// 5 sotoon
                 for(int j=0;j<4;j++){// 4 radif
-//                    myBirds->append(new Chick(2,gameTimer,1,holder,150+445+i*130,100+40+j*130 - 620,myScene));
+                    qInfo()<<"123ssss";
+//                    myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+445+i*130,100+40+j*130 - 620,myScene,myScore));
+//                    myScene->addItem(myBirds.last());
+//                    myBirds.last()->setPos(150+445+i*130,100+40+j*130 - 620);
+//                    mrChicken = new Chicken(2,gameTimer,1,holder,900,500,myScene,myScore);
+//                    mrChicken->setPos(300,300);,myScene,myScore));
+//                    myBirds.push_back(new Chicken(2,gameTimer,1,holder,900,500,myScene2,myScore));
                 }
             }
             break;
         }
         case 2:{
-            myBirds->clear();
+            myBirds.clear();
             for(int i=0;i<9;i++){// 9 sotoon
                 for(int j=0;j<4;j++){// 4 radif
-//                    myBirds->append(new Chick(2,gameTimer,1,holder,150+145+i*130,100+40+j*130 - 620,myScene));
+//                    myBirds->append(new Chicken(2,gameTimer,1,holder,150+145+i*130,100+40+j*130 - 620,myScene));
                 }
             }
             break;
         }
         case 3:{          // SEASON 2
-            myBirds->clear();
+            myBirds.clear();
             for(int i=0;i<8;i++){// 8 sotoon
                 for(int j=0;j<3;j++){// 3 radif
 //                    if((i+j)%2==0)myBirds->append(new Chick(2,gameTimer,1,holder,150+250+i*130,100+105+j*130 - 620,myScene));
-//                    else myBirds->append(new Chicken(2,gameTimer,1,holder,150+250+i*130,100+105+j*130 - 620,myScene));
+//                    else myBirds->append(new Chick(2,gameTimer,1,holder,150+250+i*130,100+105+j*130 - 620,myScene));
 
                 }
             }
@@ -137,7 +158,7 @@ void GameEngine::AddBirds(){
             for(int i=0;i<10;i++){// 10 sotoon
                 for(int j=0;j<3;j++){// 3 radif
 //                    if((i)%3==0)myBirds->append(new Chick(2,gameTimer,1,holder,150+120+i*130,100+105+j*130 - 620,myScene));
-//                    else myBirds->append(new Chicken(2,gameTimer,1,holder,150+120+i*130,100+105+j*130 - 620,myScene));
+//                    else myBirds->append(new Chick(2,gameTimer,1,holder,150+120+i*130,100+105+j*130 - 620,myScene));
 
                 }
             }

@@ -1,17 +1,20 @@
 #include "Bird.h"
 #include <QGraphicsScene>
+#include <QDebug>
 Bird::Bird(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp , QGraphicsItem *parent,int bX,int bY ,QGraphicsScene *bScene
-           ,  ScoreBoard * bScore) : QObject() , QGraphicsPixmapItem(parent), hp{hp} , time{0}
+           ,  ScoreBoard * bScore) : QObject() , QGraphicsPixmapItem(parent), hp{hp} , time{0} , Scene{bScene} , xx(bX),yy(bY)
 {
     this->pixelPer8MiliSec=pixelPer8MiliSec;
     this->bTimer=bTimer;
     this->bScore=bScore;
+    qInfo()<<"ietm";
     if(hp == 1 )
         point =5;
     else
         point =10;
-    bScene->addItem(this);
-    setPos(bX,bY);
+//    bScene->addItem(this);
+//    connect(p1,SIGNAL(timeout()),this,SLOT(changePic()));
+//    setPos(bX,bY);
 }
 
 void Bird::damage()
@@ -29,9 +32,15 @@ void Bird::damage()
     }
 }
 
+void Bird::changePic()
+{
+
+}
+
 void Bird::moveDown()
 {
     if(time<310){
+        qInfo()<<time;
         this->setPos(x() , y()+pixelPer8MiliSec);
     }
     ++time;

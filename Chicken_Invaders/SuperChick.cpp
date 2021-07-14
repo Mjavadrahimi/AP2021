@@ -11,7 +11,7 @@ SuperChick::SuperChick(const int& pixelPer8MiliSec , QTimer *bTimer , const int&
     sB=bScore;
     setPixmap(QPixmap(":/images/superchicken6.png"));
 
-    connect(bTimer,SIGNAL(timeout()),this,SLOT(changePic()));
+//    connect(bTimer,SIGNAL(timeout()),this,SLOT(changePic()));
 }
 
 void SuperChick::dropEgg()
