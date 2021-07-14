@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.15.0, 2021-07-14T15:43:24. -->
+=======
+<!-- Written by QtCreator 4.15.0, 2021-07-13T23:19:21. -->
+>>>>>>> 5238cf5629e24a00838f691883dfc95901de6f39
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -294,13 +298,19 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:E:/Game/AP2021/Chicken_Invaders/Chicken_Invaders.pro</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">E:/Game/AP2021/Chicken_Invaders/Chicken_Invaders.pro</value>
+=======
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Amin/Desktop/AP2021/Chicken_Invaders/Chicken_Invaders.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Amin/Desktop/AP2021/Chicken_Invaders/Chicken_Invaders.pro</value>
+>>>>>>> 5238cf5629e24a00838f691883dfc95901de6f39
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Amin/Desktop/AP2021/build-Chicken_Invaders-Desktop_Qt_5_12_11_MinGW_64_bit-Debug</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

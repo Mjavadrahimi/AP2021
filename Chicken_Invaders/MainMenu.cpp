@@ -1,16 +1,31 @@
 #include "MainMenu.h"
 #include "ui_MainMenu.h"
+#include <QMediaPlayer>
 
 MainMenu::MainMenu(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainMenu)
 {
+    PlayMusic();
     ui->setupUi(this);
+    QGuiApplication *app;
+    app->setOverrideCursor(QCursor(QPixmap(":/images/fork.png")));
 }
 
 MainMenu::~MainMenu()
 {
     delete ui;
+    delete music;
+
+}
+
+void MainMenu::PlayMusic()
+{
+    music = new QMediaPlayer();
+    music->setMedia(QUrl("qrc:/sounds/music.mp3"));
+    music->play();
+    music->setVolume(70);
+
 }
 
 void MainMenu::on_StartButton_clicked()
@@ -23,7 +38,7 @@ void MainMenu::on_StartButton_clicked()
 
 void MainMenu::on_SettingButton_2_clicked()
 {
-    hide();
+    delete this;
     SettingWindow *setting = new SettingWindow();
     setting->show();
 }
