@@ -23,5 +23,9 @@
         <file>egg2.png</file>
         <file>chickmeat.png</file>
         <file>gift.png</file>
+        <file>tiltle.png</file>
+        <file>mouse1.png</file>
+        <file>volumeasli.png</file>
+        <file>fork.png</file>
     </qresource>
 </RCC>
