@@ -30,5 +30,13 @@
     </qresource>
     <qresource prefix="/music">
         <file>music.mp3</file>
+        <file>boom.mp3</file>
+        <file>deadchick.mp3</file>
+        <file>deadmorgh.mp3</file>
+        <file>egg.mp3</file>
+        <file>eggboom.mp3</file>
+        <file>fire.mp3</file>
+        <file>gift.mp3</file>
+        <file>yum.mp3</file>
     </qresource>
 </RCC>

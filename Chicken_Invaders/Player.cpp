@@ -11,6 +11,10 @@
 
 Player::Player(QGraphicsItem *parent , QTimer *timer,int *kills): QObject() , QGraphicsPixmapItem(parent)
 {
+    //msound = new QMediaPlayer();
+    //msound->setMedia(QUrl("qrc:/music/yum.mp3"));
+    bsound = new QMediaPlayer();
+    bsound->setMedia(QUrl("qrc:/music/fire.mp3"));
     explosionTime=0;
     setPixmap(QPixmap(":/images/ship.png"));
     isLive=true;
@@ -20,6 +24,11 @@ Player::Player(QGraphicsItem *parent , QTimer *timer,int *kills): QObject() , QG
     // connect timer to setposition
     connect(timer,SIGNAL(timeout()),this,SLOT(setposition()));
     //setFocus();
+}
+
+Player::~Player()
+{
+    delete bsound;
 }
 
 void Player::keyPressEvent(QKeyEvent * event){
@@ -44,6 +53,10 @@ void Player::keyPressEvent(QKeyEvent * event){
 //        }
 
         if(event->key() == Qt::Key_Space){
+            //set sound
+            bsound->play();
+
+
             //create bullet
             auto bullet = new Bullet(BulletLevel,pTimer,kills);
             scene()->addItem(bullet);
@@ -128,6 +141,10 @@ void Player::setposition()
                 this->DecreaseLife();
             }
             else if(typeid(*(collidingList)[i])==typeid (ChickMeet)){
+                //set sound
+                //msound->play();
+
+
                 //add to meat score
                 scene()->removeItem((collidingList)[i]);
                 delete (collidingList)[i];

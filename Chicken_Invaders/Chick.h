@@ -2,6 +2,7 @@
 #define CHICK_H
 #include "Bird.h"
 #include "Egg.h"
+#include <QMediaPlayer>
 
 class Chick : public Bird
 {
@@ -13,7 +14,7 @@ private:
     QGraphicsScene *cScene;
     ScoreBoard *sB;
     int a;
-
+    QMediaPlayer *esound;
 public:
     Chick(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp
           , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore);

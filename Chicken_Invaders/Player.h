@@ -16,6 +16,7 @@
 #include "SuperChick.h"
 #include "Egg.h"
 #include "Gift.h"
+#include <QMediaPlayer>
 
 
 
@@ -32,9 +33,12 @@ private:
     bool isLive;
     int explosionTime;
     int *kills;
+    QMediaPlayer *bsound;
+    QMediaPlayer *msound;
 
 public:
     Player(QGraphicsItem *parent , QTimer *timer,int *kills);
+    ~Player();
     void keyPressEvent(QKeyEvent * event);
     void DecreaseLife();
     int GetLife();
