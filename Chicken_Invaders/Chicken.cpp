@@ -11,6 +11,8 @@ Chicken::Chicken(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp , 
 
 void Chicken::changePic()
 {
+
+
     cTime++;
     switch ((cTime%39) /13) {
     case 0:
