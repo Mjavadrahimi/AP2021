@@ -12,6 +12,7 @@ private:
     QGraphicsItem *par;
     QGraphicsScene *cScene;
     ScoreBoard *sB;
+    int a;
 
 public:
     Chick(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp

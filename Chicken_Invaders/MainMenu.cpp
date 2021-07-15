@@ -1,5 +1,6 @@
 #include "MainMenu.h"
 #include "ui_MainMenu.h"
+#include "gameengine.h"
 #include <QMediaPlayer>
 
 MainMenu::MainMenu(QWidget *parent) :
@@ -30,9 +31,9 @@ void MainMenu::PlayMusic()
 
 void MainMenu::on_StartButton_clicked()
 {
-    //hide();
-    //GameEngine *game = new GameEngine();
-    //game->show;
+    delete this;
+    GameEngine *game = new GameEngine(1);
+    game->show();
 }
 
 

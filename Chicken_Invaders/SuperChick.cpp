@@ -9,21 +9,22 @@ SuperChick::SuperChick(const int& pixelPer8MiliSec , QTimer *bTimer , const int&
     par=parent;
     cScene=bScene;
     sB=bScore;
+    connect(bTimer,SIGNAL(timeout()),this,SLOT(changePic()));
     setPixmap(QPixmap(":/images/superchicken6.png"));
 
-    connect(bTimer,SIGNAL(timeout()),this,SLOT(changePic()));
+//    connect(bTimer,SIGNAL(timeout()),this,SLOT(changePic()));
 }
 
 void SuperChick::dropEgg()
 {
-    Egg *cE = new Egg(1,timer,1,par,15,90,cScene,sB);
+    Egg *cE = new Egg(1,timer,1,par,this->pos().x()+15,this->pos().y()+90,cScene,sB);
     scene()->addItem(cE);
 }
 
 void SuperChick::changePic()
 {
     cTime++;
-    switch (cTime%3) {
+    switch ((cTime%36)/6) {
     case 0:
         setPixmap(QPixmap(":/images/superchicken6.png"));
         break;

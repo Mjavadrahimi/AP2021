@@ -11,6 +11,10 @@
 #include <QMouseEvent>
 #include "Bird.h"
 #include "ChickMeet.h"
+#include "Chicken.h"
+#include "Chick.h"
+#include "SuperChick.h"
+#include "Egg.h"
 #include "Gift.h"
 
 
@@ -27,15 +31,16 @@ private:
     QMessageBox *Message;
     bool isLive;
     int explosionTime;
+    int *kills;
 
 public:
-    Player(QGraphicsItem *parent , QTimer *timer);
+    Player(QGraphicsItem *parent , QTimer *timer,int *kills);
     void keyPressEvent(QKeyEvent * event);
     void DecreaseLife();
     int GetLife();
     void SetBulletLevel(int BulletLevel);
     int GetBulletLevel();
-    void mousePressEvent(QMouseEvent * event);
+    //void mousePressEvent(QGraphicsSceneMouseEvent * event);
 
 
 public slots:

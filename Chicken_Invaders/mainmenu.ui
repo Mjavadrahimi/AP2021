@@ -48,7 +48,7 @@
     <normaloff>:/images/icon.jpg</normaloff>:/images/icon.jpg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/images/FirstTestLoadingScreen.png);</string>
+   <string notr="true">background-image: url(:/images/BackGround.png);</string>
   </property>
   <property name="documentMode">
    <bool>false</bool>
