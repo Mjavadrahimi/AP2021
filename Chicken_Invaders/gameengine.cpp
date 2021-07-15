@@ -16,7 +16,9 @@ GameEngine::GameEngine(int level):level(level),QGraphicsView() {
     kills=new int();
     *kills=0;
     isLeveled=false;
-    this->level=4;
+    this->level=3;
+
+
 
     QCursor cursor(Qt::BlankCursor);
     QApplication::setOverrideCursor(cursor);
@@ -42,13 +44,31 @@ GameEngine::GameEngine(int level):level(level),QGraphicsView() {
     holder = new QGraphicsRectItem();
     holder -> setRect(0,0,1800,1000);
 
-    myScore=new ScoreBoard(holder);
-//    myBirds->append(new Chick(2,gameTimer,1,holder,150+250+6*130,100+105+6*130 - 620,myScene,myScore));
+    myScore=new ScoreBoard(1,holder);
+    lives=new ScoreBoard(3,holder);
+    meatScore = new ScoreBoard(2,myScore,holder);
+
+    scoreBoard = new QGraphicsPixmapItem();
+    scoreBoard->setPixmap(QPixmap(":/images/hudmodel2.png"));
+    myScene->addItem(scoreBoard);
+    scoreBoard->setPos(0,5);
+    myScene->addItem(myScore);
+    myScore->setPos(10,0);
+
+    meatscoreBoard = new QGraphicsPixmapItem();
+    meatscoreBoard->setPixmap(QPixmap(":/images/hudmodel1.png"));
+    myScene->addItem(meatscoreBoard);
+    meatscoreBoard->setPos(0,950);
+    myScene->addItem(meatScore);
+    meatScore->setPos(115,940);
+
+    myScene->addItem(lives);
+    lives->setPos(50,940);
 
 
     //    AddSS();
     // craete ss
-    p = new Player(holder,gameTimer,kills);
+    p = new Player(holder,gameTimer,kills,meatScore,lives);
     myScene->addItem(p);
 //    AddScoreBoard();
 
@@ -64,9 +84,6 @@ GameEngine::GameEngine(int level):level(level),QGraphicsView() {
 
 }
 GameEngine::~GameEngine(){
-//    delete [] myBirds;
-//    delete mySS;
-//    delete ScoreBoard
 
 }
 void GameEngine::TimeSchedule(){
@@ -112,7 +129,7 @@ void GameEngine::TimeSchedule(){
             break;
         }
         case 3:{ // level 3 = Season 2 Part 1
-                if(*kills==96) {
+                if(*kills>=96) {
                     qInfo()<<"lvl done";
                     isLeveled=true;
                     *kills=0;
@@ -145,8 +162,9 @@ void GameEngine::TimeSchedule(){
             if((GameTime * 8) % 6000 == 4000){ // T= s 10000 16000
                 ChooseEggSpawn(); //choose Birds to drop an egg
                 DropEgg(); //drop eggs
-            }else if(GameTime * 8 == 9000){ // T= 9s
-                //drop gift between x=(0,1740)
+            }else if(GameTime * 8 == 15000){ // T= 15s
+
+                Gift *g1= new Gift(gameTimer,RandomMaker().RandNum(1700,100),myScene);
             }
             break;
         }
@@ -159,11 +177,26 @@ void GameEngine::TimeSchedule(){
             if((GameTime * 8) % 7000 == 4000){ // T= s 11000 18000
                 ChooseEggSpawn(); //choose Birds to drop an egg
                 DropEgg(); //drop eggs
-            }else if(GameTime * 8 == 9000){ // T= 9s
+            }else if(GameTime * 8 == 15000){ // T= 9s
                 //drop gift between x=(0,1740)
+                Gift *g1= new Gift(gameTimer,RandomMaker().RandNum(1700,100),myScene);
             }
             break;
         }
+    case 7:{
+          Message = new QMessageBox;
+         //message->setText(" YOU LOSE x( \n SCORE: " + QString::number(GameEngine->getPoints()) + " ");
+         Message->setWindowTitle("you Won!!");
+         Message->setIcon(QMessageBox::Information);
+         int respond = Message->exec();
+         if(respond == QMessageBox::Ok)
+         {
+             //have problem*****
+
+             exit(0);
+            }
+
+         }
     }
 }
 void GameEngine::AddBirds(){
@@ -172,7 +205,7 @@ void GameEngine::AddBirds(){
             myBirds.clear();
             for(int i=0;i<5;i++){// 5 sotoon
                 for(int j=0;j<4;j++){// 4 radif
-                    myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+445+i*130,100+40+j*130 - 620,myScene,myScore));
+                    myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+445+i*130,100+40+j*130 - 620,myScene,myScore,false));
                 }
             }
             break;
@@ -181,7 +214,7 @@ void GameEngine::AddBirds(){
             myBirds.clear();
             for(int i=0;i<9;i++){// 9 sotoon
                 for(int j=0;j<4;j++){// 4 radif
-                    myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+145+i*130,100+40+j*130 - 620,myScene,myScore));
+                    myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+145+i*130,100+40+j*130 - 620,myScene,myScore,false));
                 }
             }
             break;
@@ -190,8 +223,8 @@ void GameEngine::AddBirds(){
             myBirds.clear();
             for(int i=0;i<8;i++){// 8 sotoon
                 for(int j=0;j<3;j++){// 3 radif
-                    if((i+j)%2==0)myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+250+i*130,100+105+j*130 - 620,myScene,myScore));
-                    else myBirds.push_back(new Chick(2,gameTimer,2,holder,150+250+i*130,100+105+j*130 - 620,myScene,myScore));
+                    if((i+j)%2==0)myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+250+i*130,100+105+j*130 - 620,myScene,myScore,false));
+                    else myBirds.push_back(new Chick(2,gameTimer,2,holder,150+250+i*130,100+105+j*130 - 620,myScene,myScore,false));
 
                 }
             }
@@ -201,8 +234,8 @@ void GameEngine::AddBirds(){
             myBirds.clear();
             for(int i=0;i<10;i++){// 10 sotoon
                 for(int j=0;j<3;j++){// 3 radif
-                    if((i)%3==0)myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+120+i*130,100+105+j*130 - 620,myScene,myScore));
-                    else myBirds.push_back(new Chick(2,gameTimer,2,holder,150+120+i*130,100+105+j*130 - 620,myScene,myScore));
+                    if((i)%3==0)myBirds.push_back(new Chicken(2,gameTimer,1,holder,150+120+i*130,100+105+j*130 - 620,myScene,myScore,false));
+                    else myBirds.push_back(new Chick(2,gameTimer,2,holder,150+120+i*130,100+105+j*130 - 620,myScene,myScore,false));
 
                 }
             }
@@ -212,8 +245,8 @@ void GameEngine::AddBirds(){
             myBirds.clear();
             for(int i=0;i<6;i++){// 6 sotoon
                 for(int j=0;j<3;j++){// 3 radif
-                    if((i+j)%2==0)myBirds.push_back(new Chick(2,gameTimer,2,holder,150+380+i*130,100+105+j*130 - 620,myScene,myScore));
-                    else myBirds.push_back(new SuperChick(2,gameTimer,4,holder,150+380+i*130,100+105+j*130 - 620,myScene,myScore));
+                    if((i+j)%2==0)myBirds.push_back(new Chick(2,gameTimer,2,holder,150+380+i*130,100+105+j*130 - 620,myScene,myScore,false));
+                    else myBirds.push_back(new SuperChick(2,gameTimer,4,holder,150+380+i*130,100+105+j*130 - 620,myScene,myScore,false));
 
                 }
             }
@@ -223,7 +256,7 @@ void GameEngine::AddBirds(){
             myBirds.clear();
             for(int i=0;i<9;i++){// 9 sotoon
                 for(int j=0;j<3;j++){// 3 radif
-                    myBirds.push_back(new SuperChick(2,gameTimer,4,holder,150+145+i*130,100+105+j*130 - 620,myScene,myScore));
+                    myBirds.push_back(new SuperChick(2,gameTimer,4,holder,150+145+i*130,100+105+j*130 - 620,myScene,myScore,false));
 
                 }
             }

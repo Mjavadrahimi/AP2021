@@ -1,11 +1,10 @@
 #include "SuperChick.h"
 
 SuperChick::SuperChick(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp
-             , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore)
-             : Bird(pixelPer8MiliSec,bTimer,hp,parent,bX,bY,bScene,bScore) ,cTime{0}
+             , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore,bool isEgg)
+             : Bird(pixelPer8MiliSec,bTimer,hp,parent,bX,bY,bScene,bScore,isEgg) ,cTime{0}
 {
-    esound = new QMediaPlayer();
-    esound->setMedia(QUrl("qrc:/music/egg.mp3"));
+
     timer = bTimer;
     par=parent;
     cScene=bScene;
@@ -18,9 +17,8 @@ SuperChick::SuperChick(const int& pixelPer8MiliSec , QTimer *bTimer , const int&
 
 void SuperChick::dropEgg()
 {
-    Egg *cE = new Egg(1,timer,1,par,this->pos().x()+15,this->pos().y()+90,cScene,sB);
+    Egg *cE = new Egg(1,timer,1,par,this->pos().x()+15,this->pos().y()+90,cScene,sB,true);
     scene()->addItem(cE);
-    esound->play();
 }
 
 void SuperChick::changePic()

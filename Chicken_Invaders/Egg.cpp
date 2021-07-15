@@ -3,11 +3,11 @@
 #include<QGraphicsScene>
 
 Egg::Egg(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp
-         , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore) :
-    Bird(pixelPer8MiliSec,bTimer,hp,parent,bX,bY,bScene,bScore) , cTime{0}
+         , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore,bool isEgg) :
+    Bird(pixelPer8MiliSec,bTimer,hp,parent,bX,bY,bScene,bScore,isEgg) , cTime{0}
 {
-    //fsound = new QMediaPlayer();
-   // fsound->setMedia(QUrl("qrc:/music/eggboom.mp3"));
+    fsound = new QMediaPlayer();
+    fsound->setMedia(QUrl("qrc:/music/eggboom.mp3"));
     isFried=false;
     setPixmap(QPixmap(":/images/egg1.png"));
      //connecting timer for moving egg down
@@ -27,7 +27,7 @@ void Egg::moveDown()
         if(!isFried){
             isFried=true;
             setPixmap(QPixmap(":/images/egg2.png"));
-            //fsound->play();
+            fsound->play();
 
         }
     }

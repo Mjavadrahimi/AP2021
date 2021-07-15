@@ -17,7 +17,7 @@ private:
     int BulletLevel = 0;
     int pixelPer8MiliSec=4;
     int *kills;
-    QMediaPlayer *dsound;
+    QMediaPlayer *bSound;
 public:
     Bullet(const int& BulletLevel,QTimer *timer,int *kills);
     ~Bullet();

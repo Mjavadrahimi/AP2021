@@ -33,11 +33,13 @@ private:
     bool isLive;
     int explosionTime;
     int *kills;
+    ScoreBoard *meatS;
+    ScoreBoard *pLives;
     QMediaPlayer *bsound;
     QMediaPlayer *msound;
 
 public:
-    Player(QGraphicsItem *parent , QTimer *timer,int *kills);
+    Player(QGraphicsItem *parent , QTimer *timer,int *kills,ScoreBoard *meatScore,ScoreBoard *pLives);
     ~Player();
     void keyPressEvent(QKeyEvent * event);
     void DecreaseLife();

@@ -10,7 +10,7 @@ private:
 
 public:
     Chicken(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp
-            , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore);
+            , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore,bool isEgg);
 
 public slots:
     void changePic();

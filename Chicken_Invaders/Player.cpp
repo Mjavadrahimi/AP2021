@@ -9,10 +9,12 @@
 
 
 
-Player::Player(QGraphicsItem *parent , QTimer *timer,int *kills): QObject() , QGraphicsPixmapItem(parent)
+Player::Player(QGraphicsItem *parent , QTimer *timer,int *kills,ScoreBoard *meatScore,ScoreBoard *pLives): QObject() , QGraphicsPixmapItem(parent),meatS{meatScore},pLives{pLives}
 {
-    //msound = new QMediaPlayer();
-    //msound->setMedia(QUrl("qrc:/music/yum.mp3"));
+    BulletLevel=1;
+
+    msound = new QMediaPlayer();
+    msound->setMedia(QUrl("qrc:/music/yum.mp3"));
     bsound = new QMediaPlayer();
     bsound->setMedia(QUrl("qrc:/music/fire.mp3"));
     explosionTime=0;
@@ -29,6 +31,7 @@ Player::Player(QGraphicsItem *parent , QTimer *timer,int *kills): QObject() , QG
 Player::~Player()
 {
     delete bsound;
+    delete msound;
 }
 
 void Player::keyPressEvent(QKeyEvent * event){
@@ -67,9 +70,16 @@ void Player::keyPressEvent(QKeyEvent * event){
 
 void Player::DecreaseLife()
 {
+    setPixmap(QPixmap(":/images/BoomSS.png"));
+
+    bsound->setMedia(QUrl("qrc:/music/boom.mp3"));
+    bsound->play();
+
     //destoroy player
     isLive=false;
     Life--;
+    pLives->addScore(-1);
+
 
 
     //check life if life < 1 player lose
@@ -83,6 +93,7 @@ void Player::DecreaseLife()
         if(respond == QMessageBox::Ok)
         {
             //have problem*****
+
             exit(0);
         }
 
@@ -142,15 +153,20 @@ void Player::setposition()
             }
             else if(typeid(*(collidingList)[i])==typeid (ChickMeet)){
                 //set sound
-                //msound->play();
+                msound->play();
 
 
                 //add to meat score
+                meatS->addScore(1);
+
                 scene()->removeItem((collidingList)[i]);
                 delete (collidingList)[i];
             }
             else if(typeid(*(collidingList)[i])==typeid (Gift)){
                 this->SetBulletLevel(2);
+                scene()->removeItem((collidingList)[i]);
+                delete (collidingList)[i];
+
             }
         }
 
@@ -164,7 +180,7 @@ void Player::setposition()
             explosionTime=0;
             QCursor::setPos(840,800);
             setPos(840,800);
-
+            bsound->setMedia(QUrl("qrc:/music/fire.mp3"));
         }
     }
 }

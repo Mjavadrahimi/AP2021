@@ -2,7 +2,7 @@
 #include <QGraphicsScene>
 #include <QDebug>
 Bird::Bird(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp , QGraphicsItem *parent,int bX,int bY ,QGraphicsScene *bScene
-           ,  ScoreBoard * bScore) : QObject() , QGraphicsPixmapItem(parent), hp{hp} , time{0}
+           ,  ScoreBoard * bScore,bool isEgg) : QObject() , QGraphicsPixmapItem(parent), hp{hp} , time{0} ,isEgg{isEgg}
 {
     this->pixelPer8MiliSec=pixelPer8MiliSec;
     this->bTimer=bTimer;
@@ -23,19 +23,31 @@ bool Bird::getIsLive()
     return isLive;
 }
 
-void Bird::damage()
+void Bird::damage(int dmg)
 {
-    --hp;
-    if(hp==0){
+    if(dmg==1){
+        hp--;
+    }else{
+        hp-=2;
+    }
+
+    qInfo()<<hp;
+    if(hp<=0){
+        qInfo()<<"12333";
         // add points to scoreboard
         bScore->addScore(point);
         if(point==10){
-            qInfo()<<"meat";
             ChickMeet *cM=new ChickMeet(bTimer);
             cM->setPos(x()+45,y()+45);
             scene()->addItem(cM);
         }
         scene()->removeItem(this);
+        if(isEgg){
+            delete this;
+            return;
+        }
+
+
         isLive=false;
     }
 }

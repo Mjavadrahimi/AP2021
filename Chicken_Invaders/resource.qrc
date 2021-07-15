@@ -27,6 +27,9 @@
         <file>superchicken5.png</file>
         <file>superchicken6.png</file>
         <file>babyChicken3.png</file>
+        <file>hudmodel2.png</file>
+        <file>hudmodel1.png</file>
+        <file>BoomSS.png</file>
     </qresource>
     <qresource prefix="/music">
         <file>music.mp3</file>

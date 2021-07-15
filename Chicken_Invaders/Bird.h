@@ -17,6 +17,7 @@ private:
     int time;
     int point;
     bool isLive;
+    bool isEgg;
     ScoreBoard *bScore;
 protected:
     QTimer *bTimer;
@@ -25,11 +26,11 @@ protected:
 public:
 
     Bird(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp , QGraphicsItem *parent ,
-         int bX , int bY , QGraphicsScene *bScene , ScoreBoard * bScore);
+         int bX , int bY , QGraphicsScene *bScene , ScoreBoard * bScore, bool isEgg);
      bool getIsLive();
 
 public slots:
-    void damage();
+    void damage(int dmg);
     virtual void changePic();
     virtual void moveDown();
     virtual void dropEgg();

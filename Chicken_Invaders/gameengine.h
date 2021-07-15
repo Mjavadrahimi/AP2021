@@ -16,7 +16,10 @@
 #include "SuperChick.h"
 #include "Player.h"
 #include "Bullet.h"
+#include "Gift.h"
 #include <QGraphicsPixmapItem>
+#include "MainMenu.h"
+#include <QMessageBox>
 //#include "Gift.h"
 //#include "SpaceShip.h"
 //#include "Scoreboard.h"
@@ -44,6 +47,11 @@ private:
     ScoreBoard * myScore;
     int *kills;
     bool isLeveled;
+    ScoreBoard * lives;
+    ScoreBoard *meatScore;
+    QGraphicsPixmapItem *scoreBoard;
+    QGraphicsPixmapItem *meatscoreBoard;
+    QMessageBox *Message;
     //SpaceShip * mySS;
     //ScoreBoard * ScoreBoard
 public slots:

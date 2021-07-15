@@ -2,8 +2,8 @@
 #include "Bird.h"
 
 Chicken::Chicken(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp , QGraphicsItem *parent ,
-                 int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore) :
-                    Bird(pixelPer8MiliSec,bTimer,hp,parent,bX,bY,bScene,bScore) ,cTime{0}
+                 int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore,bool isEgg) :
+                    Bird(pixelPer8MiliSec,bTimer,hp,parent,bX,bY,bScene,bScore,isEgg) ,cTime{0}
 {
     connect(bTimer,SIGNAL(timeout()),this,SLOT(changePic()));
     setPixmap(QPixmap(":/images/babyChicken1.png"));

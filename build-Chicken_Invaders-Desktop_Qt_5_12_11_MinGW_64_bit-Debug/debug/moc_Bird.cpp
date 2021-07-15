@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Bird_t {
-    QByteArrayData data[6];
-    char stringdata0[40];
+    QByteArrayData data[7];
+    char stringdata0[44];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,12 +34,14 @@ static const qt_meta_stringdata_Bird_t qt_meta_stringdata_Bird = {
 QT_MOC_LITERAL(0, 0, 4), // "Bird"
 QT_MOC_LITERAL(1, 5, 6), // "damage"
 QT_MOC_LITERAL(2, 12, 0), // ""
-QT_MOC_LITERAL(3, 13, 9), // "changePic"
-QT_MOC_LITERAL(4, 23, 8), // "moveDown"
-QT_MOC_LITERAL(5, 32, 7) // "dropEgg"
+QT_MOC_LITERAL(3, 13, 3), // "dmg"
+QT_MOC_LITERAL(4, 17, 9), // "changePic"
+QT_MOC_LITERAL(5, 27, 8), // "moveDown"
+QT_MOC_LITERAL(6, 36, 7) // "dropEgg"
 
     },
-    "Bird\0damage\0\0changePic\0moveDown\0dropEgg"
+    "Bird\0damage\0\0dmg\0changePic\0moveDown\0"
+    "dropEgg"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,13 +59,13 @@ static const uint qt_meta_data_Bird[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   34,    2, 0x0a /* Public */,
-       3,    0,   35,    2, 0x0a /* Public */,
-       4,    0,   36,    2, 0x0a /* Public */,
-       5,    0,   37,    2, 0x0a /* Public */,
+       1,    1,   34,    2, 0x0a /* Public */,
+       4,    0,   37,    2, 0x0a /* Public */,
+       5,    0,   38,    2, 0x0a /* Public */,
+       6,    0,   39,    2, 0x0a /* Public */,
 
  // slots: parameters
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -77,14 +79,13 @@ void Bird::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         auto *_t = static_cast<Bird *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->damage(); break;
+        case 0: _t->damage((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: _t->changePic(); break;
         case 2: _t->moveDown(); break;
         case 3: _t->dropEgg(); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject Bird::staticMetaObject = { {

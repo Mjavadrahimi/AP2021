@@ -7,8 +7,8 @@
 
 Bullet::Bullet(const int& BulletLevel , QTimer *timer, int *kills): BulletLevel{BulletLevel}, kills{kills}
 {
+    bSound=new QMediaPlayer();
 
-    dsound = new QMediaPlayer();
     //set picture for each level
 
         setPixmap(QPixmap(":/images/laser 1.png"));
@@ -23,7 +23,7 @@ Bullet::Bullet(const int& BulletLevel , QTimer *timer, int *kills): BulletLevel{
 
 Bullet::~Bullet()
 {
-    delete dsound;
+    //delete bSound;
 
 }
 
@@ -34,41 +34,40 @@ void Bullet::move()
     QList <QGraphicsItem *> collidingList = collidingItems();
     for(size_t i{0} ; i<collidingList.size();i++){
         if(typeid(*(collidingList)[i])==typeid (Chicken)){
-           dsound->setMedia(QUrl("qrc:/music/deadchick.mp3"));
-           dsound->play();
 
+            bSound->setMedia(QUrl("qrc:/music/deadchick.mp3"));
+            bSound->play();
             //decrease hp
-           (dynamic_cast<Bird *>(collidingList[i]))->damage();
+           (dynamic_cast<Bird *>(collidingList[i]))->damage(BulletLevel);
             *kills+=4;
             scene()->removeItem(this);
             delete this;
             return;
         }
         if(typeid(*(collidingList)[i])==typeid (SuperChick)){
-            dsound->setMedia(QUrl("qrc:/music/deadmorgh.mp3"));
-            dsound->play();
-
+            bSound->setMedia(QUrl("qrc:/music/deadmorgh.mp3"));
+            bSound->play();
             //decrease hp
-            (dynamic_cast<Bird *>(collidingList[i]))->damage();
-            *kills+=1;
+            (dynamic_cast<Bird *>(collidingList[i]))->damage(BulletLevel);
+            *kills+=1*BulletLevel;
             scene()->removeItem(this);
             delete this;
             return;
         }
         if(typeid(*(collidingList)[i])==typeid (Chick)){
-            dsound->setMedia(QUrl("qrc:/music/deadmorgh.mp3"));
-            dsound->play();
 
+            bSound->setMedia(QUrl("qrc:/music/deadmorgh.mp3"));
+            bSound->play();
             //decrease hp
-            (dynamic_cast<Bird *>(collidingList[i]))->damage();
-            *kills+=2;
+            (dynamic_cast<Bird *>(collidingList[i]))->damage(BulletLevel);
+            *kills+=2*BulletLevel;
             scene()->removeItem(this);
             delete this;
             return;
         }
         if(typeid(*(collidingList)[i])==typeid (Egg)){
             //decrease hp
-            (dynamic_cast<Bird *>(collidingList[i]))->damage();
+            (dynamic_cast<Bird *>(collidingList[i]))->damage(BulletLevel);
             scene()->removeItem(this);
             delete this;
             return;
