@@ -4,6 +4,8 @@ Chick::Chick(const int& pixelPer8MiliSec , QTimer *bTimer , const int& hp
              , QGraphicsItem *parent , int bX , int bY , QGraphicsScene *bScene, ScoreBoard * bScore)
                 : Bird(pixelPer8MiliSec,bTimer,hp,parent,bX,bY,bScene,bScore) ,cTime{0}
 {
+    //esound = new QMediaPlayer();
+    //esound->setMedia(QUrl("qrc:/music/egg.mp3"));
     timer = bTimer;
     par=parent;
     cScene=bScene;
@@ -17,6 +19,8 @@ void Chick::dropEgg()
 {
     Egg *cE = new Egg(1,timer,1,par,this->pos().x()+15,this->pos().y()+90,cScene,sB);
     scene()->addItem(cE);
+
+    //esound->play();
 }
 
 void Chick::changePic()

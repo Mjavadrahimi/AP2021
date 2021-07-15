@@ -16,7 +16,7 @@ GameEngine::GameEngine(int level):level(level),QGraphicsView() {
     kills=new int();
     *kills=0;
     isLeveled=false;
-    //this->level=6;
+    this->level=4;
 
     QCursor cursor(Qt::BlankCursor);
     QApplication::setOverrideCursor(cursor);

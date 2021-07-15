@@ -8,7 +8,7 @@
 Bullet::Bullet(const int& BulletLevel , QTimer *timer, int *kills): BulletLevel{BulletLevel}, kills{kills}
 {
 
-    qInfo()<<"234141";
+    dsound = new QMediaPlayer();
     //set picture for each level
 
         setPixmap(QPixmap(":/images/laser 1.png"));
@@ -21,6 +21,12 @@ Bullet::Bullet(const int& BulletLevel , QTimer *timer, int *kills): BulletLevel{
 
 }
 
+Bullet::~Bullet()
+{
+    delete dsound;
+
+}
+
 
 void Bullet::move()
 {
@@ -28,7 +34,10 @@ void Bullet::move()
     QList <QGraphicsItem *> collidingList = collidingItems();
     for(size_t i{0} ; i<collidingList.size();i++){
         if(typeid(*(collidingList)[i])==typeid (Chicken)){
-           //decrease hp
+           dsound->setMedia(QUrl("qrc:/music/deadchick.mp3"));
+           dsound->play();
+
+            //decrease hp
            (dynamic_cast<Bird *>(collidingList[i]))->damage();
             *kills+=4;
             scene()->removeItem(this);
@@ -36,6 +45,9 @@ void Bullet::move()
             return;
         }
         if(typeid(*(collidingList)[i])==typeid (SuperChick)){
+            dsound->setMedia(QUrl("qrc:/music/deadmorgh.mp3"));
+            dsound->play();
+
             //decrease hp
             (dynamic_cast<Bird *>(collidingList[i]))->damage();
             *kills+=1;
@@ -44,6 +56,9 @@ void Bullet::move()
             return;
         }
         if(typeid(*(collidingList)[i])==typeid (Chick)){
+            dsound->setMedia(QUrl("qrc:/music/deadmorgh.mp3"));
+            dsound->play();
+
             //decrease hp
             (dynamic_cast<Bird *>(collidingList[i]))->damage();
             *kills+=2;
